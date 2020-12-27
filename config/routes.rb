@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'quizzes/index'
+  get 'quizzes/show'
   devise_for :users
   root to: "tops#index"
   get 'tops/index'
