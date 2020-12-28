@@ -4,7 +4,11 @@
 <%= @accounting_information.current_asset %>
 <%= @accounting_information.fixed_asset %>
 
+<%= pie_chart @asset_data %>
+
 <h3>負債の部</h3>
 <%= @accounting_information.current_liability %>
 <%= @accounting_information.fixed_liability %>
 <%= @accounting_information.net_asset %>
+
+<%= pie_chart @liability_data %>
