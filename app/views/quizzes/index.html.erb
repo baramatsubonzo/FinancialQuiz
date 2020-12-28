@@ -1,4 +1,5 @@
 <h1>問題</h1>
+<p>これはどの会社の財務諸表でしょう？</p>
 
 <h3>資産の部</h3>
 <%= @accounting_information.current_asset %>
@@ -12,3 +13,8 @@
 <%= @accounting_information.net_asset %>
 
 <%= pie_chart @liability_data %>
+
+<%= @accounting_information.company_name %>
+<%= AccountingInformation.all.sample.company_name %>
+<%= AccountingInformation.all.sample.company_name %>
+<%= AccountingInformation.all.sample.company_name %>
