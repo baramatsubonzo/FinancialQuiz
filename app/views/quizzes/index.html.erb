@@ -1,2 +1,10 @@
-<h1>Quizzes#index</h1>
-<p>Find me in app/views/quizzes/index.html.erb</p>
+<h1>問題</h1>
+
+<h3>資産の部</h3>
+<%= @accounting_information.current_asset %>
+<%= @accounting_information.fixed_asset %>
+
+<h3>負債の部</h3>
+<%= @accounting_information.current_liability %>
+<%= @accounting_information.fixed_liability %>
+<%= @accounting_information.net_asset %>
