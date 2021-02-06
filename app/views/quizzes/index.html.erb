@@ -1,89 +1,101 @@
 <h1>問題</h1>
 <p>これはどの会社の財務諸表でしょう？</p>
 
-<div class="chart-container" style="position: relative; height:80vh; width:80vw">
+<div class="chart-container" style="position: relative; width:40vh">
 <canvas id="canvas"></canvas>
 </div>
 
 <script>
 
 var barChartData = {
-			labels: ['資産の部', '負債の部'],
-			datasets: [{
-				barPercentage: 1,
-				categoryPercentage: 1,
-				label: '流動資産',
-				backgroundColor: 'rgb(54, 162, 235)',
-				data: [
-				    gon.current_asset,
-					0
-				]
-			}, {
-				barPercentage: 1,
-				categoryPercentage: 1,
-				label: '固定資産',
-				backgroundColor: 'rgb(153, 102, 255)',
-				data: [
-					gon.fixed_asset,
-					0
-				]
-			}, {
-				barPercentage: 1,
-				categoryPercentage: 1,
-				label: '流動負債',
-				backgroundColor: 'rgb(255, 159, 64)',
-				data: [
-					0,
-					gon.current_liability
-				]
-            }, {
-				barPercentage: 1,
-				categoryPercentage: 1,
-				label: '固定負債',
-				backgroundColor: 'rgb(255, 99, 132)',
-				data: [
-					0,
-					gon.fixed_liability
-				]
-			}, {
-				barPercentage: 1,
-				categoryPercentage: 1,
-				label: '純資産',
-				backgroundColor: 'rgb(75, 192, 192)',
-				data: [
-					0,
-					gon.net_asset
-				]
-			}]
+	labels: ['資産の部', '負債の部'],
+	datasets: [{
+		barPercentage: 1,
+		categoryPercentage: 1,
+		label: '流動資産',
+		backgroundColor: 'rgb(54, 162, 235)',
+		data: [
+			gon.current_asset,
+			0
+		]
+	}, {
+		barPercentage: 1,
+		categoryPercentage: 1,
+		label: '固定資産',
+		backgroundColor: 'rgb(153, 102, 255)',
+		data: [
+			gon.fixed_asset,
+			0
+		]
+	}, {
+		barPercentage: 1,
+		categoryPercentage: 1,
+		label: '流動負債',
+		backgroundColor: 'rgb(255, 159, 64)',
+		data: [
+			0,
+			gon.current_liability
+		]
+	}, {
+		barPercentage: 1,
+		categoryPercentage: 1,
+		label: '固定負債',
+		backgroundColor: 'rgb(255, 99, 132)',
+		data: [
+			0,
+			gon.fixed_liability
+		]
+	}, {
+		barPercentage: 1,
+		categoryPercentage: 1,
+		label: '純資産',
+		backgroundColor: 'rgb(75, 192, 192)',
+		data: [
+			0,
+			gon.net_asset
+		]
+	}]
 
-		};
-		window.onload = function() {
-            
-			var ctx = document.getElementById('canvas').getContext('2d');
-			window.myBar = new Chart(ctx, {
-				type: 'bar',
-				data: barChartData,
-				options: {
-					title: {
+};
+window.onload = function() {
+	var ctx = document.getElementById('canvas').getContext('2d');
+	window.myBar = new Chart(ctx, {
+		type: 'bar',
+		data: barChartData,
+		options: {
+			title: {
+				display: true,
+				text: '①'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false
+			},
+			responsive: true,
+			aspectRatio: 1,
+			scales: {
+				xAxes: [{
+					stacked: true,
+					display: false
+				}],
+				yAxes: [{
+					stacked: true,
+					ticks: {
+						// 目盛にドル記号を入れる
+						callback: function(value, index, values) {
+							result = (value / 1000000).toLocaleString();
+							return result;
+						}
+					},
+					scaleLabel: {
 						display: true,
-						text: 'Chart.js Bar Chart - Stacked'
-					},
-					tooltips: {
-						mode: 'index',
-						intersect: false
-					},
-					responsive: true,
-					scales: {
-						xAxes: [{
-							stacked: true,
-						}],
-						yAxes: [{
-							stacked: true
-						}]
+						labelString: '百万円'
 					}
-				}
-			});
-        };
+				}]
+			}
+		}
+	});
+};
         
 
 
